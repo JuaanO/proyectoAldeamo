@@ -1,0 +1,2 @@
+# proyectoAldeamo
+Automatizacion de aldeamo
