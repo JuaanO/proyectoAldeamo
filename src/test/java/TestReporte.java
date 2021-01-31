@@ -1,10 +1,12 @@
-import org.junit.Assert;
-import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
 import java.util.concurrent.TimeUnit;
 
 import static java.lang.Thread.sleep;
@@ -12,10 +14,10 @@ import static java.lang.Thread.sleep;
 public class TestReporte {
 
     WebDriver driver;
-    @Test
 
 
-    public void reportes() throws InterruptedException {
+    @BeforeMethod
+    public void setUp() {
 
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
@@ -24,7 +26,10 @@ public class TestReporte {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("https://tellit.aldeamo.com/");
         driver.manage().window().maximize();
+    }
 
+    @Test
+    public void reportes() throws InterruptedException {
         // LOGIN
         driver.findElement(By.xpath("//*[@id='username']")).sendKeys("juan.estrella");
         driver.findElement(By.xpath("//*[@id='password']")).sendKeys("Tellit2020*");
@@ -34,15 +39,15 @@ public class TestReporte {
 
         // ENVIAR UN MENSAJE
         //  Agregar validacion queesta en mensaje
-//        driver.findElement(By.xpath("//h1[contains(text(),'Potencia las')]")).click();
-//        driver.findElement(By.xpath("//*[@id='inputGsmList']")).sendKeys("986235829");
-//        driver.findElement(By.xpath("//*[@id='txtMessage']")).sendKeys("Hola, este es un mensaje de prueba.");
-//        driver.findElement(By.xpath("//*[@id='buttonProcess']")).click();
+        driver.findElement(By.xpath("//h1[contains(text(),'Potencia las')]")).click();
+        driver.findElement(By.xpath("//*[@id='inputGsmList']")).sendKeys("986235829");
+        driver.findElement(By.xpath("//*[@id='txtMessage']")).sendKeys("Hola, este es un mensaje de prueba.");
+        driver.findElement(By.xpath("//*[@id='buttonProcess']")).click();
 
-        //Confirmar envio de mensaje
+//        Confirmar envio de mensaje
 
-//        driver.findElement(By.xpath("//*[@id='buttonSend']")).click();
-//        driver.findElement(By.xpath("//*[@id='buttonClose']")).click();
+        driver.findElement(By.xpath("//*[@id='buttonSend']")).click();
+        driver.findElement(By.xpath("//*[@id='buttonClose']")).click();
 
         // REPORTES
 
@@ -81,9 +86,16 @@ public class TestReporte {
 
         // descargo notificaciones
 
-        driver.findElement(By.cssSelector("body app-root li[class='dropdown drop-custom notifications-menu show'] li li:nth-child(1) div:nth-child(2) div:nth-child(1) a:nth-child(2) i:nth-child(1)")).click();
-
         sleep(5000);
+        driver.findElement(By.xpath("//body//app-root//li[@class='dropdown drop-custom notifications-menu show']//li//li[1]//div[2]//div[1]//a[2]//i[1]")).click();
+//
+        sleep(2000);
+
+    }
+
+    @AfterMethod
+    public void tearDown() {
+
         driver.quit();
     }
 }
