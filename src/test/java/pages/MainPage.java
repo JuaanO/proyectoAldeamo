@@ -1,10 +1,9 @@
 package pages;
 
+import helpers.Helpers;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-
-import static java.lang.Thread.sleep;
 
 public class MainPage {
 
@@ -24,11 +23,12 @@ public class MainPage {
         driver.findElement(smsButton).click();
     }
 
-    public void downloadReport() throws InterruptedException {
+    public void downloadReport() {
+        Helpers helpers = new Helpers();
         driver.findElement(notificationButton).click();
-        sleep(5000);
+        helpers.sleepSeconds(5);
         driver.findElement(downloadFileButton).click();
-        sleep(2000);
+        helpers.sleepSeconds(3);
     }
 
     public void assertionMain(){
