@@ -7,7 +7,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import pages.DetailedReportPage;
-import pages.LoginPage;
 import pages.MainPage;
 import pages.SmsPage;
 
@@ -15,19 +14,15 @@ public class Test {
 
     private WebDriver driver = Hooks.getDriver();
 
-    @Given("^a user loged to tellit$")
-    public void aUserLogedToTellit() throws Throwable {
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.login("juan.estrella","Tellit2020*");
-        loginPage.assertionLogin();
+    @Given("^a user logged to Tellit choose an option$")
+    public void aUserLoggedToTellitChooseAnOption() {
+        MainPage mainPage = new MainPage(driver);
+        mainPage.chooseOption();
+        mainPage.assertionMain();
     }
 
     @When("^the user do a \"([^\"]*)\"$")
     public void theUserDoA(String arg1) throws Throwable {
-        // MAIN PAGE
-        MainPage mainPage = new MainPage(driver);
-        mainPage.chooseOption();
-        mainPage.assertionMain();
         SmsPage smsPage = new SmsPage(driver);
         smsPage.inputNumber("987288333");
         smsPage.inputMessage("Hola, este es un mensaje de prueba.");

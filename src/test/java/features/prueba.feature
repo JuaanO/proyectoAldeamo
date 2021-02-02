@@ -4,7 +4,7 @@ Feature: Message and report validation
   then from the reports module download the report
 
   Scenario: A user send a message and download report
-    Given a user loged to tellit
+    Given a user logged to Tellit choose an option
     When the user do a "fast send"
     Then the user can download a report
 
