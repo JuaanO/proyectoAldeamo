@@ -2,6 +2,8 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+
 import static java.lang.Thread.sleep;
 
 public class DetailedReportPage {
@@ -72,5 +74,9 @@ public class DetailedReportPage {
     public void returnMainPage() throws InterruptedException {
         driver.findElement(mainButton).click();
         sleep(3000);
+    }
+
+    public void assertionReportPage(){
+        Assert.assertTrue(driver.findElement(By.xpath("//h2[normalize-space()='Reporte Detallados']")).getText().contains("Reporte Detallados"));
     }
 }
