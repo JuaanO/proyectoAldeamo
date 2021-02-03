@@ -45,12 +45,17 @@ public class DetailedReportPage {
         driver.findElement(menuButton).click();
     }
 
-    public void selectUser(String user){
+    public void fillForm(String user, String reference){
+        driver.findElement(menuButton).click();
         driver.findElement(userDropDownButton).click();
         driver.findElement(selectAllCheck).click();
         driver.findElement(searchInputName).sendKeys(user);
         driver.findElement(selectNameOption).click();
         driver.findElement(userDropUpButton).click();
+        driver.findElement(referenceIntput).sendKeys(reference);
+        driver.findElement(typeDropDownButton).click();
+        driver.findElement(typeOptionCheck).click();
+        driver.findElement(typeDropUpButton).click();
     }
 
     public void inputReference(String reference){

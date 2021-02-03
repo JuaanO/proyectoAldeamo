@@ -40,8 +40,8 @@ public class TestReporte {
         mainPage.assertionMain();
         // SMS PAGE
         SmsPage smsPage = new SmsPage(driver);
-        smsPage.inputNumber("987288333");
-        smsPage.inputMessage("Hola, este es un mensaje de prueba.");
+//        smsPage.inputNumber("987288333");
+//        smsPage.inputMessage("Hola, este es un mensaje de prueba.");
 
         smsPage.proccessMessage();
         smsPage.sendMessage();
@@ -51,7 +51,7 @@ public class TestReporte {
         DetailedReportPage detailedReportPage = new DetailedReportPage(driver);
         Assert.assertTrue(driver.findElement(By.xpath("//h2[normalize-space()='Reporte Detallados']")).getText().contains("Reporte Detallados"));
         detailedReportPage.openMenu();
-        detailedReportPage.selectUser("estrella");
+//        detailedReportPage.selectUser("estrella");
         detailedReportPage.inputReference("Fast Send 2021-01-30");
         detailedReportPage.chooseType();
         detailedReportPage.searchReport();

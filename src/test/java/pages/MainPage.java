@@ -11,12 +11,14 @@ public class MainPage {
     private final By smsButton;
     private final By notificationButton;
     private final By downloadFileButton;
+    private final By assertionMain;
 
     public MainPage(WebDriver driver){
         this.driver = driver;
         smsButton = By.xpath("//h1[contains(text(),'Potencia las')]");
         notificationButton = By.xpath("/html/body/app-root/div[2]/app-navbar/header/nav/div[3]/div/ul/li[1]/a/span");
         downloadFileButton = By.xpath("//body//app-root//li[@class='dropdown drop-custom notifications-menu show']//li//li[1]//div[2]//div[1]//a[2]//i[1]");
+        assertionMain = By.xpath("//h2[normalize-space()='SMS']");
     }
 
     public void chooseOption(){
@@ -32,6 +34,6 @@ public class MainPage {
     }
 
     public void assertionMain(){
-        Assert.assertTrue(driver.findElement(By.xpath("//h2[normalize-space()='SMS']")).getText().contains("SMS"));
+        Assert.assertTrue(driver.findElement(assertionMain).getText().contains("SMS"));
     }
 }
