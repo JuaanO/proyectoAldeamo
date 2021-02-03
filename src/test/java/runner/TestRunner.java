@@ -10,6 +10,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/test/java/features",
         glue = {"seleniumgluecode"},
+        plugin = {"com.vimalselvam.cucumber.listener.ExtentCucumberFormatter:src/test/output/reports/report.html"},
         snippets = SnippetType.CAMELCASE
 )
 
