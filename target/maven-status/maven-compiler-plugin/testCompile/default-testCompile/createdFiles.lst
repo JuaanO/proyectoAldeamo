@@ -1,0 +1,10 @@
+pages\SmsPage.class
+seleniumgluecode\Test.class
+seleniumgluecode\Hooks.class
+pages\LoginPage.class
+seleniumgluecode\TestBase.class
+tests\TestReporte.class
+helpers\Helpers.class
+pages\DetailedReportPage.class
+runner\TestRunner.class
+pages\MainPage.class
