@@ -1,11 +1,12 @@
 package seleniumgluecode;
 
+import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
+import helpers.Helpers;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.testng.ITestResult;
 import pages.LoginPage;
 import java.util.concurrent.TimeUnit;
 
@@ -31,17 +32,11 @@ public class Hooks {
     }
 
     @After
-    public void tearDown() {
-//        if(!result.isSuccess()){
-//            File screenshoot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-//            try {
-//                FileUtils.copyFile(screenshoot, new File(/*"Error"+System.currentTimeMillis()+".png"*/"HOOOLA.png"));
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-////            byte [] screenshoot = ((TakesScreenshot)getDriver()).getScreenshotAs(OutputType.BYTES);
-////            scenario.embed(screenshoot, "image/png");
-//        }
+    public void tearDown(Scenario result) {
+        if(result.isFailed()){
+            Helpers helpers = new Helpers();
+            helpers.takeScrenshoot(driver);
+        }
         System.out.println("Scenario: " +numberOfCase+ " ran correctly.");
         driver.quit();
     }
