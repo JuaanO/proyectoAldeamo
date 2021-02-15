@@ -30,12 +30,12 @@ public class DetailedReportPage {
         selectAllCheck = By.xpath("//*[@id='multiSelectUser']/div/div[2]/ul[1]/li[1]/div");
         searchInputName = By.xpath("//*[@id='multiSelectUser']/div/div[2]/ul[1]/li[2]/input");
         selectNameOption = By.xpath("//*[@id='multiSelectUser']/div/div[2]/ul[2]/li");
-        referenceIntput = By.xpath("//input[@placeholder='Referencia']");
+        referenceIntput = By.xpath("//input[@placeholder='Reference']");
         menuButton = By.xpath("//i[@class='fas fa-bars']");
         typeDropDownButton = By.xpath("//*[@id='multiSelectMessageType']/div/div[1]/span");
         typeDropUpButton = By.xpath("//*[@id='multiSelectMessageType']/div/div[1]/span");
         typeOptionCheck = By.xpath("//div[normalize-space()='SMS']");
-        searchButton = By.xpath("//button[normalize-space()='Buscar']");
+        searchButton = By.xpath("//button[normalize-space()='Search']");
         downloadButton = By.xpath("//i[@class='fas fa-file-download fa-2x']");
         mainButton = By.xpath("//a[@class='navbar-brand']//img");
 
@@ -82,6 +82,6 @@ public class DetailedReportPage {
     }
 
     public void assertionReportPage(){
-        Assert.assertTrue(driver.findElement(By.xpath("//h2[normalize-space()='Reporte Detallados']")).getText().contains("Reporte Detallados"));
+        Assert.assertTrue(driver.findElement(By.xpath("//h2[normalize-space()='Detailed Report']")).getText().contains("Detailed Report"));
     }
 }

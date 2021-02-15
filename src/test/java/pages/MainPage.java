@@ -15,7 +15,7 @@ public class MainPage {
 
     public MainPage(WebDriver driver){
         this.driver = driver;
-        smsButton = By.xpath("//h1[contains(text(),'Potencia las')]");
+        smsButton = By.xpath("//h1[contains(text(),'Enhance communications with')]");
         notificationButton = By.xpath("/html/body/app-root/div[2]/app-navbar/header/nav/div[3]/div/ul/li[1]/a/span");
         downloadFileButton = By.xpath("//body//app-root//li[@class='dropdown drop-custom notifications-menu show']//li//li[1]//div[2]//div[1]//a[2]//i[1]");
         assertionMain = By.xpath("//h2[normalize-space()='SMS']");

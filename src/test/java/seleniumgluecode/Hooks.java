@@ -5,9 +5,11 @@ import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import helpers.Helpers;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import pages.LoginPage;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 public class Hooks {
@@ -16,17 +18,18 @@ public class Hooks {
     private static int numberOfCase = 0;
 
     @Before
-    public void setUp(){
+    public void setUp() throws MalformedURLException {
 
         numberOfCase ++;
         System.out.println("Scenario: " +numberOfCase+ " is running ..");
-        DesiredCapabilities cap = new DesiredCapabilities();
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/Chromedriver/chromedriver.exe");
-        driver = new ChromeDriver();
+        DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+        capabilities.setBrowserName("chrome");
+        URL url = new URL("http://localhost:4444/wd/hub");
+        driver = new RemoteWebDriver(url,capabilities);
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.get("https://tellit.aldeamo.com/");
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.login("juan.estrella","Tellit2020*");
+        loginPage.login("juan.estrella","Tellit2020..");
         loginPage.assertionLogin();
         driver.manage().window().maximize();
     }

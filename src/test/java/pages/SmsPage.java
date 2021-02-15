@@ -32,16 +32,11 @@ public class SmsPage {
         reportSmsOption = By.xpath("//ul[@id='Reportes']//li[2]//a[1]");
     }
 
-//    public void inputNumber(String number){
-//        driver.findElement(numberInput).sendKeys(number);
-//    }
-
     public void createMessage(String number,String message){
         driver.findElement(numberInput).sendKeys(number);
         WebDriverWait wait = new WebDriverWait(driver, TIMEOUT);
         WebElement elemento = wait.until(ExpectedConditions.presenceOfElementLocated(messageInput));
         elemento.sendKeys(message);
-//        driver.findElement(messageInput).sendKeys(message);
     }
 
     public void proccessMessage() throws InterruptedException {
@@ -63,11 +58,6 @@ public class SmsPage {
     }
 
     public void chooseOption(){
-//        WebDriverWait wait = new WebDriverWait(driver, TIMEOUT);
-//        WebElement elemento = wait.until(ExpectedConditions.elementToBeClickable(reportOption));
-//        WebElement elemento1 = wait.until(ExpectedConditions.elementToBeClickable(reportSmsOption));
-//        elemento.click();
-//        elemento1.click();
         driver.findElement(reportOption).click();
         driver.findElement(reportSmsOption).click();
     }
