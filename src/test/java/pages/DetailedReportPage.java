@@ -2,6 +2,8 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+
 import static java.lang.Thread.sleep;
 
 public class DetailedReportPage {
@@ -28,12 +30,12 @@ public class DetailedReportPage {
         selectAllCheck = By.xpath("//*[@id='multiSelectUser']/div/div[2]/ul[1]/li[1]/div");
         searchInputName = By.xpath("//*[@id='multiSelectUser']/div/div[2]/ul[1]/li[2]/input");
         selectNameOption = By.xpath("//*[@id='multiSelectUser']/div/div[2]/ul[2]/li");
-        referenceIntput = By.xpath("//input[@placeholder='Referencia']");
+        referenceIntput = By.xpath("//input[@placeholder='Reference']");
         menuButton = By.xpath("//i[@class='fas fa-bars']");
         typeDropDownButton = By.xpath("//*[@id='multiSelectMessageType']/div/div[1]/span");
         typeDropUpButton = By.xpath("//*[@id='multiSelectMessageType']/div/div[1]/span");
         typeOptionCheck = By.xpath("//div[normalize-space()='SMS']");
-        searchButton = By.xpath("//button[normalize-space()='Buscar']");
+        searchButton = By.xpath("//button[normalize-space()='Search']");
         downloadButton = By.xpath("//i[@class='fas fa-file-download fa-2x']");
         mainButton = By.xpath("//a[@class='navbar-brand']//img");
 
@@ -43,12 +45,17 @@ public class DetailedReportPage {
         driver.findElement(menuButton).click();
     }
 
-    public void selectUser(String user){
+    public void fillForm(String user, String reference){
+        driver.findElement(menuButton).click();
         driver.findElement(userDropDownButton).click();
         driver.findElement(selectAllCheck).click();
         driver.findElement(searchInputName).sendKeys(user);
         driver.findElement(selectNameOption).click();
         driver.findElement(userDropUpButton).click();
+        driver.findElement(referenceIntput).sendKeys(reference);
+        driver.findElement(typeDropDownButton).click();
+        driver.findElement(typeOptionCheck).click();
+        driver.findElement(typeDropUpButton).click();
     }
 
     public void inputReference(String reference){
@@ -72,5 +79,9 @@ public class DetailedReportPage {
     public void returnMainPage() throws InterruptedException {
         driver.findElement(mainButton).click();
         sleep(3000);
+    }
+
+    public void assertionReportPage(){
+        Assert.assertTrue(driver.findElement(By.xpath("//h2[normalize-space()='Detailed Report']")).getText().contains("Detailed Report"));
     }
 }

@@ -26,6 +26,6 @@ public class LoginPage {
     }
     // Validacion
     public void assertionLogin(){
-        Assert.assertTrue(driver.findElement(By.xpath("//h2[normalize-space()='Productos']")).getText().contains("Productos"));
+        Assert.assertTrue(driver.findElement(By.xpath("//h2[normalize-space()='Products']")).getText().contains("Products"));
     }
 }
