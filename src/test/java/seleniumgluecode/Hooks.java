@@ -22,9 +22,8 @@ public class Hooks {
 
         numberOfCase ++;
         System.out.println("Scenario: " +numberOfCase+ " is running ..");
-        DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-        capabilities.setBrowserName("chrome");
-        URL url = new URL("http://localhost:4444/wd/hub");
+        DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+        URL url = new URL("http://0.0.0.0:4444/wd/hub");
         driver = new RemoteWebDriver(url,capabilities);
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.get("https://tellit.aldeamo.com/");
