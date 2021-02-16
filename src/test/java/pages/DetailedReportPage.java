@@ -22,6 +22,7 @@ public class DetailedReportPage {
     private final By searchButton;
     private final By downloadButton;
     private final By mainButton;
+    private final By xpathError;
 
     public DetailedReportPage(WebDriver driver){
         this.driver = driver;
@@ -38,6 +39,7 @@ public class DetailedReportPage {
         searchButton = By.xpath("//button[normalize-space()='Search']");
         downloadButton = By.xpath("//i[@class='fas fa-file-download fa-2x']");
         mainButton = By.xpath("//a[@class='navbar-brand']//img");
+        xpathError = By.xpath("//a[@class='error_no_existe']//img");
 
     }
 
@@ -58,6 +60,19 @@ public class DetailedReportPage {
         driver.findElement(typeDropUpButton).click();
     }
 
+    public void fillFormAndFail(String user, String reference){
+        driver.findElement(menuButton).click();
+        driver.findElement(userDropDownButton).click();
+        driver.findElement(selectAllCheck).click();
+        driver.findElement(searchInputName).sendKeys(user);
+        driver.findElement(selectNameOption).click();
+        driver.findElement(userDropUpButton).click();
+        driver.findElement(referenceIntput).sendKeys(reference);
+        driver.findElement(typeDropDownButton).click();
+        driver.findElement(typeOptionCheck).click();
+        driver.findElement(typeDropUpButton).click();
+        driver.findElement(xpathError).click();
+    }
     public void inputReference(String reference){
         driver.findElement(referenceIntput).sendKeys(reference);
     }
