@@ -12,6 +12,6 @@ Feature: Message and report validation
   Scenario: A user send a message and fail
     Given a user logged to Tellit choose an option
     When the user do a "fast send"
-    And the user fill the form and fail test
+    And the user fill the form
     Then the user can download a report
 

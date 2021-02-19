@@ -22,7 +22,7 @@ public class Hooks {
 
         numberOfCase ++;
         System.out.println("Scenario: " +numberOfCase+ " is running ..");
-        DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+        DesiredCapabilities capabilities = DesiredCapabilities.chrome();
         URL url = new URL("http://192.168.1.131:4444/wd/hub");
         driver = new RemoteWebDriver(url,capabilities);
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
