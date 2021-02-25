@@ -12,7 +12,7 @@ services:
     ports:
       - "32778:5900"
     volumes:
-      - /dev/shm:/dev/shm
+      - D:\selenium\chrome:/dev/shm
     depends_on:
       - selenium-hub
     environment:
@@ -25,10 +25,9 @@ services:
     ports:
       - "32777:5900"
     volumes:
-      - /dev/shm:/dev/shm
+      - D:\selenium\firefox:/dev/shm
     depends_on:
       - selenium-hub
     environment:
       - HUB_HOST=selenium-hub
       - HUB_PORT=4444
-
